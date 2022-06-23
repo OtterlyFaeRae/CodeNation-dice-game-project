@@ -1,0 +1,65 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+div{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height:50%;
+}
+
+h2, p, img, button{
+    margin: 10px 0 0px 0;
+}
+
+h2{
+    height:50px;
+    font-size:medium;
+}
+
+img{
+    height:100px;
+}
+
+#container{
+    height:500px;
+    width:100%;
+    justify-items: center;
+}
+
+#playerbox{
+    justify-content: space-between;
+    margin-top:auto;
+    border:solid;
+    border-radius: 10px;
+    width:15%;
+}
+
+#roll-two{
+    visibility: hidden;
+    display:none;
+}
+
+#hold{
+    visibility: hidden;
+    display: none;
+}
+
+#score-box{
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#button-box{
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top:10px;
+    width:50%;
+    border-style:solid solid none solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
