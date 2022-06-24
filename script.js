@@ -97,6 +97,7 @@ rollOne.addEventListener("click", ()=>{
     // Swap condition for 2 player. 
     } else if (result === 1 && player != "you"){
         swapButtons()
+        scoreOne.textContent = 0
     // Win condition.
     } else if (parseInt(scoreOne.textContent) >= 20) {
         winloss.textContent = `${player} win!`
@@ -132,6 +133,7 @@ try {
         }, {once: true});
     // Swap condition for 2 player.
     } else if (result === 1 && player != "you"){
+        scoreTwo.textContent = 0
         swapButtons()
     // Win condition.
     } else if (parseInt(scoreTwo.textContent) >= 20) {
