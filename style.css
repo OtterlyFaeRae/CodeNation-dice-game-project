@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color:#521447;
+}
+
 div{
     display:flex;
     flex-direction: column;
@@ -12,11 +16,8 @@ div{
     height:50%;
 }
 
-h2, p, img, button{
-    margin: 10px 0 0px 0;
-}
-
 h2{
+    padding-top: 15px;
     height:50px;
     font-size:medium;
 }
@@ -25,18 +26,53 @@ img{
     height:100px;
 }
 
+button{
+    border: solid #efad06;
+    background-color:#120920;
+    padding: 3px;
+    border-radius: 10px;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 #container{
     height:500px;
     width:100%;
+    padding-top:auto;
+    margin-top:auto;
     justify-items: center;
+}
+
+#container-index{
+    flex-direction: row;
+    height:500px;
+    width:100%;
+    padding:auto;
+    margin:auto;
+    justify-content: space-evenly;
+    align-items: center;
+    border:solid;
 }
 
 #playerbox{
     justify-content: space-between;
+    background-color: #120920;
     margin-top:auto;
-    border:solid;
+    color: white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    border:solid #efad06;
     border-radius: 10px;
     width:15%;
+}
+
+#win-box{
+    width:100%;
+    background-color: #120920;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    color: white;
+    border-bottom: solid #efad06;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #roll-two{
@@ -59,7 +95,16 @@ img{
     justify-content: space-evenly;
     margin-top:10px;
     width:50%;
+    border-color: #efad06;
     border-style:solid solid none solid;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.player-select{
+    font-size: x-large;
+    padding: auto;
+    margin:auto;
+    height:100px;
+    width:150px;
 }

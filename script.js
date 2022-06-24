@@ -44,6 +44,19 @@ const resetButtons = ()=> {
     }, {once:true})
 }
 
+const swapButtons = () => {
+    if(rollOne.style.visibility == "hidden"){
+        rollOne.style.visibility = "visible"
+        rollTwo.style.visibility = "hidden"
+        player = "player one"
+    // Hides player 1's button & reveals player 2's.
+    } else {
+        rollTwo.style.visibility = "visible"
+        rollOne.style.visibility = "hidden"
+        player = "player two"
+    }
+}
+
 // Sets buttons to correct text when New Game is clicked.
 // rollOne button's text is set as "new game" and other buttons are display:none by default.
 rollOne.addEventListener("click", ()=>{
@@ -71,13 +84,16 @@ rollOne.addEventListener("click", ()=>{
             null
         }
     }
-    // Loss condition.
-    if(result === 1) {
+    // Loss condition for 1 player.
+    if(result === 1 && player == "you") {
         winloss.textContent = `${player} lose!`
         resetButtons()
         rollOne.addEventListener("click", () =>{
             reset()
         }, {once: true});
+    // Swap condition for 2 player. 
+    } else if (result === 1 && player != "you"){
+        swapButtons()
     // Win condition.
     } else if (parseInt(scoreOne.textContent) >= 20) {
         winloss.textContent = `${player} win!`
@@ -97,13 +113,15 @@ try {
     // Updates player two's score based on the result. 
     scoreTwo.textContent = parseInt(scoreTwo.textContent) + result
     // Loss condition.
-    if(result === 1) {
+    if(result === 1 && player === "you") {
         winloss.textContent = `${player} lose!`
         resetButtons()
         rollOne.addEventListener("click", ()=>{
             reset()
         }, {once: true});
     // Win condition
+    } else if (result === 1 && player != "you"){
+        swapButtons()
     } else if (parseInt(scoreTwo.textContent) >= 20) {
         winloss.textContent = `${player} win!`
         resetButtons()
@@ -119,17 +137,7 @@ try {
 // Click event listener for the Hold button if present.
 try {
     hold.addEventListener("click", ()=>{
-        // Hides player 2's button & reveals player 1's.
-        if(rollOne.style.visibility == "hidden"){
-            rollOne.style.visibility = "visible"
-            rollTwo.style.visibility = "hidden"
-            player = "player one"
-        // Hides player 1's button & reveals player 2's.
-        } else {
-            rollTwo.style.visibility = "visible"
-            rollOne.style.visibility = "hidden"
-            player = "player two"
-        }
+        swapButtons()
     })
 } catch {
     null
