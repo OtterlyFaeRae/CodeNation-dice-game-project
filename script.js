@@ -133,7 +133,7 @@ try {
         }, {once: true});
     // Swap condition for 2 player.
     } else if (result === 1 && player != "you"){
-        scoreOne.textContent = 0
+        scoreTwo.textContent = 0
         swapButtons()
     // Win condition.
     } else if (parseInt(scoreTwo.textContent) >= 20) {
