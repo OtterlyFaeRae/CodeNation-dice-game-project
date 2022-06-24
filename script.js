@@ -21,7 +21,7 @@ const reset = () => {
     winloss.textContent = " "
 }
 
-// Resets buttons.
+// Resets buttons to default settings.
 const resetButtons = ()=> {
     rollOne.style.visibility = "visible"
     rollOne.textContent = "New game"
@@ -33,6 +33,7 @@ const resetButtons = ()=> {
     } catch {
         null
     }
+    // Adds a once-only event listener to start the game again.
     rollOne.addEventListener("click", ()=>{
         try {
             hold.style.display = "block"
@@ -44,7 +45,9 @@ const resetButtons = ()=> {
     }, {once:true})
 }
 
+// Swaps whose button is currently active.
 const swapButtons = () => {
+    // Hides player 2's button & reveals player 1's.
     if(rollOne.style.visibility == "hidden"){
         rollOne.style.visibility = "visible"
         rollTwo.style.visibility = "hidden"
@@ -76,7 +79,7 @@ rollOne.addEventListener("click", ()=>{
     image.src = dice[result-1]
     // Processes & updates player 1's score.
     scoreOne.textContent = parseInt(scoreOne.textContent) + result
-    // Checks if Player One's score is above 7, and reveals the Hold button if so.
+    // Checks if Player One's score is above 10, and reveals the Hold button if so.
     if (parseInt(scoreOne.textContent) >= 10) {
         try {
             hold.style.visibility = "visible"
@@ -112,16 +115,25 @@ try {
     image.src = dice[result-1]
     // Updates player two's score based on the result. 
     scoreTwo.textContent = parseInt(scoreTwo.textContent) + result
-    // Loss condition.
+    // Checks if Player One's score is above 10, and reveals the Hold button if so.
+    if (parseInt(scoreTwo.textContent) >= 10) {
+        try {
+            hold.style.visibility = "visible"
+        } catch (error) {
+            null
+        }
+    }
+    // Loss condition for 1 player.
     if(result === 1 && player === "you") {
         winloss.textContent = `${player} lose!`
         resetButtons()
         rollOne.addEventListener("click", ()=>{
             reset()
         }, {once: true});
-    // Win condition
+    // Swap condition for 2 player.
     } else if (result === 1 && player != "you"){
         swapButtons()
+    // Win condition.
     } else if (parseInt(scoreTwo.textContent) >= 20) {
         winloss.textContent = `${player} win!`
         resetButtons()
